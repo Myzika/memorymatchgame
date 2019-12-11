@@ -25,4 +25,10 @@ class Instructions {
 
         ConsoleUtils.clearScreen();
     }
+
+    void howEnter() {
+        System.out.println(Colors.PURPLE_BOLD_BRIGHT);
+        System.out.println("The way you need to enter your coordinates will be exactly like this: 2 8. The first number is the x value and the second is the y value. Do not put a comma between the numbers. After you press enter, you can enter your next set of coordinates.");
+        System.out.println(Colors.RESET);
+    }
 }
