@@ -23,7 +23,7 @@ class Printer {
         } else if (difficulty == Difficulty.HARD) {
             return 8;
         } else {
-            System.out.println("This wasn't supposed to happen! Please restart the application.");
+            System.err.println("This wasn't supposed to happen! Please restart the application.");
             return 0;
         }
     }
@@ -50,7 +50,7 @@ class Printer {
         System.out.print(Colors.RESET);
     }
 
-    void grid(Difficulty difficulty, String topic, int x1, int y1, int x2, int y2, String term1, String term2) {
+    void grid(Difficulty difficulty, String topic, int x1, int x2, int y1, int y2,  String term1, String term2) {
         ConsoleUtils.clearScreen();
         /*
          * Outside loop prints the y-axis coordinates
@@ -60,10 +60,19 @@ class Printer {
             System.out.print(Colors.RESET);
             System.out.print((i + 1));
             for (int j = 0; j < dimension(difficulty); j++) {
-                if((i != x1 && i != x2) || (j != y1 && j != y2)) System.out.print("\t" + Colors.BLUE + "[" + topic + "]");
-                else if (i == x1 && j == y1) System.out.print("\t" + Colors.BLUE + "[" + term1 + "]");
-                else if (i == x2 && j == y2) System.out.print("\t" + Colors.BLUE + "[" + term2 + "]");
-                else System.out.print("\t" + Colors.BLUE + "[" + topic + "]");
+                if((j == x1 && i == y1) || (j == x2 && i == y2)) {
+                    if(topic.equalsIgnoreCase("elements")) {
+                        if ((j == x1) && (i == y1))  System.out.print("\t" + Colors.BLUE + "[" + term1 + "\t\t]");
+                        else System.out.print("\t" + Colors.BLUE + "[" + term2 + "\t\t]");
+                    }
+                    else if (topic.equalsIgnoreCase("psychology")) {
+                        if ((j == x1) && (i == y1))  System.out.print("\t" + Colors.BLUE + "[" + term1 + "]");
+                        else System.out.print("\t" + Colors.BLUE + "[" + term2 + "]");
+                    }
+                }
+                else {
+                    System.out.print("\t" + Colors.BLUE + "[" + topic + "]");
+                }
             }
             System.out.println("\n");
         }
