@@ -24,14 +24,13 @@ class Reader {
             while (sc.hasNextLine()) {
                 String s = sc.nextLine();
                 elements.add(s);
-//                sc.close();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         Collections.shuffle(elements);
     }
-//    Difficulty difficulty, int x, int y
+
     void search(Difficulty difficulty) {
 
         if (difficulty == Difficulty.EASY) wordCount = 8;
@@ -44,8 +43,6 @@ class Reader {
         }
 
         Collections.shuffle(gameList);
-
-        System.out.println(gameList);
     }
 
     void interact() {
